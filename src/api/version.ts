@@ -12,7 +12,7 @@ router.get<{}, VersionResponse>('/', (req, res) => {
         version: "0.0.7",
         name: "policy"
     },{
-        version: "0.0.8",
+        version: "0.0.9",
         name: "booking"
     }]);
 });
