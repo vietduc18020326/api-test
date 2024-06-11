@@ -33,8 +33,8 @@ app.use(middlewares.errorHandler);
 const startServer = () => {
   try {
     dbConnect().then();
-    app.listen(8081, () => {
-      console.log("Server listening on 5000 http://localhost:8081");
+    app.listen(8082, () => {
+      console.log("Server listening on 5000 http://localhost:8082");
     });
   } catch (err) {
     console.log(err);
