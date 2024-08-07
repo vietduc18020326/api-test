@@ -11,7 +11,7 @@ type VersionResponse = {
 router.get<{}, VersionResponse>("/", (req, res) => {
   res.json({
     prod: "1",
-    staging: "3",
+    staging: "4",
     dev: "2",
   });
 });
