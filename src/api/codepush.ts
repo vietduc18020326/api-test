@@ -3,12 +3,14 @@ import express from "express";
 const router = express.Router();
 
 type VersionResponse = {
-  version: string;
+  prod: string;
+  staging: string;
 };
 
 router.get<{}, VersionResponse>("/", (req, res) => {
   res.json({
-    version: "5",
+    prod: "1",
+    staging: "1",
   });
 });
 
