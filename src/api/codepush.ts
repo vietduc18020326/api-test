@@ -12,7 +12,7 @@ router.get<{}, VersionResponse>("/", (req, res) => {
   res.json({
     prod: "1",
     staging: "4",
-    dev: "2",
+    dev: "3",
   });
 });
 
