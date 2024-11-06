@@ -6,6 +6,7 @@ export interface IRawError {
   stackTrace?: string;
   ts?: number;
   device?: string;
+  version?: string;
 }
 
 const ErrorsSchema = new mongoose.Schema<IRawError>(
@@ -22,10 +23,24 @@ const ErrorsSchema = new mongoose.Schema<IRawError>(
     device: {
       type: String,
     },
+    version: {
+      type: String,
+    },
   },
   { timestamps: true },
 );
 
 type RawError = mongoose.InferSchemaType<typeof ErrorsSchema>;
 
-module.exports = mongoose.model("RawError", ErrorsSchema);
+// Function to get the model with a dynamic collection name
+const getErrorModel = (namespace: string) => {
+  return mongoose.model<IRawError>(
+    `RawError_${namespace}`, // Unique model name
+    ErrorsSchema,
+    `RawErrors_${namespace}`, // Collection name in MongoDB
+  );
+};
+
+module.exports = {
+  getErrorModel,
+};
