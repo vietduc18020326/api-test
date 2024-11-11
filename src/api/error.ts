@@ -16,8 +16,9 @@ router.post("/save", async (req, res, next) => {
 });
 
 router.post("/teamspace", async (req, res, next) => {
-  const RawError = getErrorModel(req.body?.version + "_Teamspace");
-  const newError = new RawError(req.body);
+  const params = req.body === "string" ? JSON.parse(req.body) : req.body;
+  const RawError = getErrorModel(params?.version + "_Teamspace");
+  const newError = new RawError(params);
 
   try {
     const savedError = await newError.save();
