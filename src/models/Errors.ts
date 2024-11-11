@@ -3,15 +3,24 @@ import mongoose from "mongoose";
 export interface IRawError {
   id?: string;
   message?: string;
+  name?: string;
+  reason?: string;
   stackTrace?: string;
   ts?: number;
   device?: string;
   version?: string;
+  type?: string;
 }
 
 const ErrorsSchema = new mongoose.Schema<IRawError>(
   {
     message: {
+      type: String,
+    },
+    name: {
+      type: String,
+    },
+    reason: {
       type: String,
     },
     stackTrace: {
@@ -24,6 +33,9 @@ const ErrorsSchema = new mongoose.Schema<IRawError>(
       type: String,
     },
     version: {
+      type: String,
+    },
+    type: {
       type: String,
     },
   },
