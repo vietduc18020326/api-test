@@ -25,6 +25,7 @@ const ErrorsSchema = new mongoose.Schema<IRawError>(
     },
     stackTrace: {
       type: String,
+      set: (value: any) => (Array.isArray(value) ? value.join("\n") : value),
     },
     ts: {
       type: Number,
